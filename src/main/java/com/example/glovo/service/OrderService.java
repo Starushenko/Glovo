@@ -1,49 +1,40 @@
 package com.example.glovo.service;
 
 import com.example.glovo.model.Order;
-import com.example.glovo.model.Product;
+import com.example.glovo.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class OrderService {
-    private final List<Order> orders = new ArrayList<>();
-    public OrderService() {
-        Product teysty = Product.builder()
-                .cost(2)
-                .name("teysty")
-                .id(1308)
-                .build();
-
-        orders.add(Order.builder()
-                .cost(3)
-                .date("22.05.2023")
-                .id(43245)
-                .products(List.of(teysty))
-                .build());
+    private final OrderRepository orderRepository;
+    @Autowired
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
     }
 
-    public Order get(long id){
-        for (Order order : orders) {
-            if (order.getId()==id){
-                return order;
-            }
-        }
-        return null;
+    public Order get(int id){
+       return orderRepository.findById(id).orElseThrow();
     }
 
     public  List<Order> getOrders(){
-        return orders;
+        return orderRepository.findAll();
     }
 
-    public void add(Order order){
-        orders.add(order);
+
+    public Order create(Order order){
+        return orderRepository.save(order);
     }
 
-    public void create(Order order){
-
+    public void delete(int id){
+        orderRepository.deleteById(id);
     }
+
+//    public Order update(int id){
+//        return orderRepository.update(id);
+//    }
 
 }

@@ -1,19 +1,16 @@
-package com.example.glovo.model;
+package com.example.glovo.orderEntity;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.List;
-
+@Table
 @Data
 @Builder
-@AllArgsConstructor
-public class Order {
+public class OrderEntity {
     @Id
     private int id;
     private String date;
     private int cost;
-   // private List<Product> products;
 }

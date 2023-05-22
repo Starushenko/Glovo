@@ -23,10 +23,17 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public Order getById(@PathVariable long id){
+    public Order getById(@PathVariable int id){
         return orderService.get(id);
     }
 
     @PostMapping
-    public void create(@RequestBody Order order){}
+    public Order create(@RequestBody Order order){
+       return orderService.create(order);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id){
+        orderService.delete(id);
+    }
 }
