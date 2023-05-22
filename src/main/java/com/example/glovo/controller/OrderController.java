@@ -27,5 +27,6 @@ public class OrderController {
         return orderService.get(id);
     }
 
-
+    @PostMapping
+    public void create(@RequestBody Order order){}
 }
