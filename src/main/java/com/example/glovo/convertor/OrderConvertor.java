@@ -1,7 +1,7 @@
 package com.example.glovo.convertor;
 
 import com.example.glovo.model.Order;
-import com.example.glovo.orderEntity.OrderEntity;
+import com.example.glovo.entity.OrderEntity;
 
 public class OrderConvertor {
     public static Order orderEntityToOrder(OrderEntity orderEntity){
