@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-
 import java.util.List;
 
 @Data
@@ -16,6 +15,4 @@ public class Order {
     private String date;
     private int cost;
     private List<Product> products;
-
-
 }
